@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title><%= webpackConfig.name %></title>
+</head>
+<body>
+<noscript style="position: relative;">
+  <div style="background-color: firebrick; max-width: 700px; padding: 20px; margin: 48px auto auto; border-radius: 8px;">
+    <strong style="font-size: xx-large; text-align: center; color: ivory;">
+      <span style="text-align: center; display: block; font-size: 48px; text-shadow: 2px 2px 6px black;">WARNING</span>
+      We're sorry but [<span style="color: gold"><%= webpackConfig.name %></span>]
+      doesn't work properly without JavaScript enabled.<br>
+      Please enable it to continue.
+    </strong>
+  </div>
+</noscript>
+<div id="app"></div>
+<!-- built files will be auto injected -->
+</body>
+</html>
