@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  muscle-and-fitness-admin:
+    container_name: muscle-and-fitness-admin-dev_dkr
+    image: "ijohnnymiller/muscle-and-fitness-admin-dev_dkr:${TAG}"
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        ENV: development_docker
+        ENV_ALIAS: dev_dkr
+    ports:
+      - 8081:80
+    volumes:
+      - /Users/johnny/docker-file-mapping/exrx-net-crawler/log:/var/log/nginx
