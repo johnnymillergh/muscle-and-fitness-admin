@@ -7,6 +7,7 @@ import { listenToColorScheme } from '@/plugins/adaptive-color-scheme'
 import { MultiWindow } from '@/mixins/multi-window'
 import '@/directives/throttled-click'
 import '@/directives/debounced-click'
+import '@/directives/click-control'
 // import '@/plugins/axios-mock-adapter'
 
 Vue.config.productionTip = false

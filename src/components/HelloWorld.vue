@@ -38,7 +38,7 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
-    <el-button type="primary" v-debounced-click:500="handleClickButton">Button</el-button>
+    <el-button type="primary" v-debounced-click:500="handleClickButton" v-click-control>Button</el-button>
   </div>
 </template>
 

@@ -41,10 +41,14 @@ export class MultiWindow extends Vue {
       const val = ((multiWindowOptions[key] === null) || (multiWindowOptions[key] === undefined) ? '' : multiWindowOptions[key])
       queryString += queryString === '' ? `?${key}=${val}` : `&${key}=${val}`
     }
-    setTimeout(() => {
+    setTimeout(async () => {
       const newWindow = window.open(`${target}${queryString}`, multiWindowOptions?.windowTarget)
       if (!newWindow) {
-        window.alert('Please give us permission to open a new page!')
+        await context.$alert('Please give us permission to open new page', 'Error', {
+          type: 'error',
+          showClose: false,
+          confirmButtonText: 'Sure'
+        })
         throw new Error('Failed to gain permission to open a new page!')
       } else {
         newWindow.opener.$vue = context
