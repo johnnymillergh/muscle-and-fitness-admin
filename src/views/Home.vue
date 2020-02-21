@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" src="../assets/logo.png" style="width: 256px">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
