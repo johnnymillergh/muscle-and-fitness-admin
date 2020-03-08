@@ -1,18 +1,25 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="@/assets/images/logo.png" style="width: 256px">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Muscle and fitness admin social image" src="@/assets/images/muscle-and-fitness-admin-social-image.png"
+         style="height: 300px">
+    <HelloWorld :msg="msg"/>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
+<script lang="ts">
+import Vue from 'vue'
 import HelloWorld from '@/components/HelloWorld.vue'
+import { AppUtil } from '@/utils/app-util'
 
-export default {
+export default Vue.extend({
   name: 'Home',
   components: {
     HelloWorld
+  },
+  computed: {
+    msg () {
+      return `WELCOME TO ${AppUtil.getCamelCaseName()}`
+    }
   }
-}
+})
 </script>
