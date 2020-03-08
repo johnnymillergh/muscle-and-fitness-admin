@@ -7,10 +7,6 @@
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-}
-
 .fade-transform-leave-active, .fade-transform-enter-active {
   transition: all .5s;
 }
