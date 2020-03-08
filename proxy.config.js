@@ -1,9 +1,9 @@
 module.exports = {
-  '/common': {
+  '/gateway': {
     target: `${process.env.VUE_APP_BASE_URL}`,
     changeOrigin: true,
     pathRewrite: {
-      '^/common': `/${process.env.VUE_APP_BASE_API}/common`
+      '^/gateway': `/${process.env.VUE_APP_BASE_API}/gateway`
     }
   }
 }
