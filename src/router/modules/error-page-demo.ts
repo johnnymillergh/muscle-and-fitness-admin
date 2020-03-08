@@ -1,16 +1,6 @@
 /* eslint-disable no-unused-vars */
-import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
+import { RouteConfig } from 'vue-router'
 import Layout from '@/components/Layout/index.vue'
-
-Vue.use(VueRouter)
-
-const routerModulesFiles = require.context('@/router/modules', false, /.ts$/)
-let allModuleRouterList: RouteConfig[] = []
-routerModulesFiles.keys().forEach(key => {
-  const specificRouterVariableKey = Object.keys(routerModulesFiles(key))
-  allModuleRouterList = allModuleRouterList.concat(routerModulesFiles(key)[specificRouterVariableKey[0]])
-})
 
 /*
   name:'router-name'             the name field is required when using <keep-alive>, it should also match its component's name property
@@ -29,36 +19,32 @@ routerModulesFiles.keys().forEach(key => {
     activeMenu: '/example/list'  if set path, the sidebar will highlight the path you set
   }
 */
-export const routes: RouteConfig[] = [
-  {
-    path: '/redirect',
-    component: Layout,
-    meta: { hidden: true },
-    children: [
-      {
-        path: '/redirect/:path(.*)',
-        component: () => import(/* webpackChunkName: "redirect" */ '@/views/redirect/index.vue')
+export const routes: RouteConfig = {
+  path: '/error-page-demo',
+  component: Layout,
+  redirect: 'noredirect',
+  meta: {
+    title: 'Error Page',
+    icon: '404'
+  },
+  children: [
+    {
+      path: '401',
+      component: () => import(/* webpackChunkName: "error-page-demo-401" */ '@/views/error/401.vue'),
+      name: 'error-page-demo-401',
+      meta: {
+        title: 'Error Page 401',
+        noCache: true
       }
-    ]
-  },
-  {
-    path: '/404',
-    component: () => import(/* webpackChunkName: "404" */ '@/views/error/404.vue'),
-    meta: { hidden: true }
-  },
-  {
-    path: '/401',
-    component: () => import(/* webpackChunkName: "401" */ '@/views/error/401.vue'),
-    meta: { hidden: true }
-  },
-  ...allModuleRouterList,
-  {
-    path: '*',
-    redirect: '/404',
-    meta: { hidden: true }
-  }
-]
-
-const router = new VueRouter({ routes: routes })
-
-export default router
+    },
+    {
+      path: '404',
+      component: () => import(/* webpackChunkName: "error-page-demo-404" */ '@/views/error/404.vue'),
+      name: 'error-page-demo-404',
+      meta: {
+        title: 'Error Page 404',
+        noCache: true
+      }
+    }
+  ]
+}
