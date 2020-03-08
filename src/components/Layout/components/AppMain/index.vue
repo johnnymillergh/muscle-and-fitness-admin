@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import { TagsViewModule } from '@/store/modules/tags-view.ts'
+import { TagsViewModule } from '@/store/modules/tags-view'
 
 @Component({
   name: 'AppMain'
@@ -33,12 +33,16 @@ export default class extends Vue {
   width: 100%;
   position: relative;
   overflow: hidden;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .fixed-header + .app-main {
   padding-top: 50px;
   height: 100vh;
   overflow: auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .hasTagsView {
