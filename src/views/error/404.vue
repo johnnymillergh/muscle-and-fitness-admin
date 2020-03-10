@@ -12,13 +12,11 @@
         <div class="text-404__info">All rights reserved
           <a style="color:#20a0ff" href="https://wallstreetcn.com" target="_blank">wallstreetcn</a>
         </div>
-        <div class="text-404__headline">
-          {{ message }}
-        </div>
+        <h2 class="text-404__headline">Error 404: Page Not Found</h2>
         <div class="text-404__info">
           Please check that the URL you entered is correct, or click the button below to return to the homepage.
         </div>
-        <a href="" class="text-404__return-home">Back to home</a>
+        <el-button type="primary" @click="handleClickBackToHome" round>Back to home</el-button>
       </div>
     </div>
   </div>
@@ -31,7 +29,9 @@ import { Component, Vue } from 'vue-property-decorator'
   name: 'Page404'
 })
 export default class extends Vue {
-  private message = '404 Page Not Found'
+  private handleClickBackToHome () {
+    this.$router.push({ path: '/' })
+  }
 }
 </script>
 
@@ -169,7 +169,7 @@ export default class extends Vue {
   .text-404 {
     position: relative;
     float: left;
-    width: 300px;
+    width: 320px;
     padding: 30px 0;
     overflow: hidden;
 
@@ -177,7 +177,7 @@ export default class extends Vue {
       font-size: 60px;
       font-weight: bold;
       line-height: 40px;
-      color: #1482f0;
+      color: $color-primary;
       opacity: 0;
       margin-bottom: 20px;
       animation-name: slideUp;
@@ -186,10 +186,7 @@ export default class extends Vue {
     }
 
     &__headline {
-      font-size: 20px;
-      line-height: 24px;
-      color: #222;
-      font-weight: bold;
+      color: $color-danger;
       opacity: 0;
       margin-bottom: 10px;
       animation-name: slideUp;
@@ -207,25 +204,6 @@ export default class extends Vue {
       animation-name: slideUp;
       animation-duration: 0.5s;
       animation-delay: 0.2s;
-      animation-fill-mode: forwards;
-    }
-
-    &__return-home {
-      display: block;
-      float: left;
-      width: 110px;
-      height: 36px;
-      background: #1482f0;
-      border-radius: 100px;
-      text-align: center;
-      color: #ffffff;
-      opacity: 0;
-      font-size: 14px;
-      line-height: 36px;
-      cursor: pointer;
-      animation-name: slideUp;
-      animation-duration: 0.5s;
-      animation-delay: 0.3s;
       animation-fill-mode: forwards;
     }
 
