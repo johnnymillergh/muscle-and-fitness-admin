@@ -8,7 +8,7 @@
         <img class="pic-404__child right" src="@/assets/images/404-cloud.png" alt="404">
       </div>
       <div class="text-404">
-        <div class="text-404__oops">OOPS!</div>
+        <div class="text-404__oops">Oops!</div>
         <div class="text-404__info">All rights reserved
           <a style="color:#20a0ff" href="https://wallstreetcn.com" target="_blank">wallstreetcn</a>
         </div>
@@ -186,7 +186,7 @@ export default class extends Vue {
     overflow: hidden;
 
     &__oops {
-      font-size: 32px;
+      font-size: 60px;
       font-weight: bold;
       line-height: 40px;
       color: #1482f0;
