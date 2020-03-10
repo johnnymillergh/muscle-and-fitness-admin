@@ -231,9 +231,7 @@ export function legacyPost (url: string, params: any): Promise<any> {
  */
 export function put (url: string, params: any): Promise<any> {
   return new Promise<any>((resolve, reject) => {
-    service.put(url, {
-      params: params
-    }).then(resp => {
+    service.put(url, params).then(resp => {
       resolve(resp)
     }).catch(rejectedReason => {
       reject(rejectedReason)

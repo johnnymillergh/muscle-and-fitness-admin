@@ -8,6 +8,7 @@
 import Vue from 'vue'
 
 export default Vue.extend({
+  name: 'Heading',
   props: {
     text: {
       type: String,
@@ -25,7 +26,6 @@ export default Vue.extend({
       default: 1
     }
   },
-  name: 'Heading',
   computed: {
     headingClass () {
       return `${this.type} level-${this.level}`
