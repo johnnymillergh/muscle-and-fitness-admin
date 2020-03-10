@@ -1,7 +1,13 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
     <el-button type="primary" v-debounced-click="handleClickButton" v-click-control>Get App Info</el-button>
+    <heading :text="msg" type="primary" :level="1"/>
+    <heading :text="msg" type="primary" :level="2"/>
+    <heading :text="msg" type="primary" :level="3"/>
+    <heading :text="msg" type="success" :level="3"/>
+    <heading :text="msg" type="warning" :level="3"/>
+    <heading :text="msg" type="danger" :level="3"/>
+    <heading :text="msg" type="info" :level="3"/>
     <el-table :data="tableData" v-loading="loadingAppInfo">
       <el-table-column label="Name" prop="name"/>
       <el-table-column label="Value" prop="value"/>
@@ -12,8 +18,11 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { gatewayApi } from '@/apis/gateway'
+import Heading from '@/components/Heading/index.vue'
 
-@Component
+@Component({
+  components: { Heading }
+})
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string
   private appInfo: string = ''

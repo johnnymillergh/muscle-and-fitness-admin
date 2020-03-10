@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from '@/components/HelloWorld/index.vue'
 import { AppUtil } from '@/utils/app-util'
 
 export default Vue.extend({
