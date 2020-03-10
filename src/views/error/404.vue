@@ -1,19 +1,19 @@
 <template>
-  <div class="wscn-http404-container">
-    <div class="wscn-http404">
-      <div class="pic-404">
-        <img class="pic-404__parent" src="@/assets/images/404.png" alt="404">
-        <img class="pic-404__child left" src="@/assets/images/404-cloud.png" alt="404">
-        <img class="pic-404__child mid" src="@/assets/images/404-cloud.png" alt="404">
-        <img class="pic-404__child right" src="@/assets/images/404-cloud.png" alt="404">
+  <div class="error-404-container">
+    <div class="error-404-wrapper">
+      <div class="error-404-picture">
+        <img class="error-404-picture__parent" src="@/assets/images/404.png" alt="404">
+        <img class="error-404-picture__child left" src="@/assets/images/404-cloud.png" alt="404">
+        <img class="error-404-picture__child middle" src="@/assets/images/404-cloud.png" alt="404">
+        <img class="error-404-picture__child right" src="@/assets/images/404-cloud.png" alt="404">
       </div>
-      <div class="text-404">
-        <div class="text-404__oops">Oops!</div>
-        <div class="text-404__info">All rights reserved
+      <div class="error-404-text">
+        <div class="error-404-text__oops">Oops!</div>
+        <div class="error-404-text__info">All rights reserved
           <a style="color:#20a0ff" href="https://wallstreetcn.com" target="_blank">wallstreetcn</a>
         </div>
-        <h2 class="text-404__headline">Error 404: Page Not Found</h2>
-        <div class="text-404__info">
+        <h2 class="error-404-text__headline">Error 404: Page Not Found</h2>
+        <div class="error-404-text__info">
           Please check that the URL you entered is correct, or click the button below to return to the homepage.
         </div>
         <el-button type="primary" @click="handleClickBackToHome" round>Back to home</el-button>
@@ -36,20 +36,20 @@ export default class extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.wscn-http404-container {
+.error-404-container {
   transform: translate(-50%, -50%);
   position: absolute;
   top: 40%;
   left: 50%;
 }
 
-.wscn-http404 {
+.error-404-wrapper {
   position: relative;
   width: 1200px;
   padding: 0 50px;
   overflow: hidden;
 
-  .pic-404 {
+  .error-404-picture {
     position: relative;
     float: left;
     width: 600px;
@@ -70,7 +70,7 @@ export default class extends Vue {
         animation: cloudLeft 3s linear 1s infinite both;
       }
 
-      &.mid {
+      &.middle {
         width: 46px;
         top: 10px;
         left: 420px;
@@ -166,7 +166,7 @@ export default class extends Vue {
     }
   }
 
-  .text-404 {
+  .error-404-text {
     position: relative;
     float: left;
     width: 320px;

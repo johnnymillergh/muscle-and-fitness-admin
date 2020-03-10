@@ -7,7 +7,7 @@
         <h2 class="error-message">Error 401: Permission Denied</h2>
         <p>Contact your leader if you wanna access the page.</p>
         <p>Or you could go to:</p>
-        <ul class="list-unstyled">
+        <ul class="option-list">
           <li class="link-type">
             <router-link to="/dashboard">Home</router-link>
           </li>
@@ -84,7 +84,7 @@ export default class extends Vue {
     color: $color-danger;
   }
 
-  .list-unstyled {
+  .option-list {
     font-size: 14px;
 
     li {
