@@ -67,11 +67,7 @@ export default class extends Vue {
         top: 17px;
         left: 220px;
         opacity: 0;
-        animation-name: cloudLeft;
-        animation-duration: 2s;
-        animation-timing-function: linear;
-        animation-fill-mode: forwards;
-        animation-delay: 1s;
+        animation: cloudLeft 3s linear 1s infinite both;
       }
 
       &.mid {
@@ -79,11 +75,7 @@ export default class extends Vue {
         top: 10px;
         left: 420px;
         opacity: 0;
-        animation-name: cloudMid;
-        animation-duration: 2s;
-        animation-timing-function: linear;
-        animation-fill-mode: forwards;
-        animation-delay: 1.2s;
+        animation: cloudMid 3s linear 1.2s infinite both;
       }
 
       &.right {
@@ -91,11 +83,7 @@ export default class extends Vue {
         top: 100px;
         left: 500px;
         opacity: 0;
-        animation-name: cloudRight;
-        animation-duration: 2s;
-        animation-timing-function: linear;
-        animation-fill-mode: forwards;
-        animation-delay: 1s;
+        animation: cloudRight 3s linear 1s infinite both;
       }
 
       @keyframes cloudLeft {
