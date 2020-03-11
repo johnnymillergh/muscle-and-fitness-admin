@@ -36,7 +36,7 @@ export default class extends Vue {
   }
 
   get routes () {
-    console.debug('routes', routes)
+    console.info('TODO: route permission. Routes', routes)
     return routes
   }
 

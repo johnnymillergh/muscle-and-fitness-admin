@@ -17,6 +17,7 @@ import Layout from '@/components/Layout/index.vue'
     noCache: true                if true, the page will not be cached (default is false)
     affix: true                  if true, the tag will affix in the tags-view
     activeMenu: '/example/list'  if set path, the sidebar will highlight the path you set
+    memuOrder: number            if set, will be sorted in ascending order
   }
 */
 export const routes: RouteConfig = {

@@ -20,33 +20,45 @@ import Layout from '@/components/Layout/index.vue'
     memuOrder: number            if set, will be sorted in ascending order
   }
 */
-export const routes: RouteConfig = {
-  path: '/error-page-demo',
-  component: Layout,
-  redirect: 'noredirect',
-  meta: {
-    title: 'Error Page',
-    icon: 'cancel-mark',
-    menuOrder: 3
-  },
-  children: [
-    {
-      path: '401',
-      component: () => import(/* webpackChunkName: "error-page-demo-401" */ '@/views/error/401.vue'),
-      name: 'error-page-demo-401',
-      meta: {
-        title: 'Error Page 401',
-        noCache: true
-      }
+export const routes: RouteConfig[] = [
+  {
+    path: '/exercise',
+    component: Layout,
+    redirect: '/exercise/overview',
+    meta: {
+      title: 'Exercise',
+      icon: 'dumbbell',
+      menuOrder: 4
     },
-    {
-      path: '404',
-      component: () => import(/* webpackChunkName: "error-page-demo-404" */ '@/views/error/404.vue'),
-      name: 'error-page-demo-404',
-      meta: {
-        title: 'Error Page 404',
-        noCache: true
+    children: [
+      {
+        path: 'overview',
+        component: () => import(/* webpackChunkName: "exercise-overview" */ '@/views/exercise/overview/index.vue'),
+        name: 'exercise-overview',
+        meta: {
+          title: 'Exercise Overview',
+          noCache: false
+        }
+      },
+      {
+        path: 'create',
+        component: () => import(/* webpackChunkName: "exercise-create" */ '@/views/exercise/create/index.vue'),
+        name: 'exercise-create',
+        meta: {
+          title: 'Create Exercise',
+          noCache: true
+        }
       }
+    ]
+  },
+  {
+    path: '/exercise/edit',
+    component: () => import(/* webpackChunkName: "exercise-edit" */ '@/views/exercise/edit/index.vue'),
+    name: 'exercise-edit',
+    meta: {
+      title: 'Edit Exercise',
+      noCache: false,
+      hidden: true
     }
-  ]
-}
+  }
+]

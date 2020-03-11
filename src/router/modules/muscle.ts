@@ -20,33 +20,45 @@ import Layout from '@/components/Layout/index.vue'
     memuOrder: number            if set, will be sorted in ascending order
   }
 */
-export const routes: RouteConfig = {
-  path: '/error-page-demo',
-  component: Layout,
-  redirect: 'noredirect',
-  meta: {
-    title: 'Error Page',
-    icon: 'cancel-mark',
-    menuOrder: 3
-  },
-  children: [
-    {
-      path: '401',
-      component: () => import(/* webpackChunkName: "error-page-demo-401" */ '@/views/error/401.vue'),
-      name: 'error-page-demo-401',
-      meta: {
-        title: 'Error Page 401',
-        noCache: true
-      }
+export const routes: RouteConfig[] = [
+  {
+    path: '/muscle',
+    component: Layout,
+    redirect: '/muscle/overview',
+    meta: {
+      title: 'Muscle',
+      icon: 'muscle',
+      menuOrder: 5
     },
-    {
-      path: '404',
-      component: () => import(/* webpackChunkName: "error-page-demo-404" */ '@/views/error/404.vue'),
-      name: 'error-page-demo-404',
-      meta: {
-        title: 'Error Page 404',
-        noCache: true
+    children: [
+      {
+        path: 'overview',
+        component: () => import(/* webpackChunkName: "muscle-overview" */ '@/views/muscle/overview/index.vue'),
+        name: 'muscle-overview',
+        meta: {
+          title: 'Muscle Overview',
+          noCache: false
+        }
+      },
+      {
+        path: 'create',
+        component: () => import(/* webpackChunkName: "muscle-create" */ '@/views/muscle/create/index.vue'),
+        name: 'muscle-create',
+        meta: {
+          title: 'Create Muscle',
+          noCache: true
+        }
       }
+    ]
+  },
+  {
+    path: '/muscle-edit',
+    component: () => import(/* webpackChunkName: "muscle-edit" */ '@/views/muscle/edit/index.vue'),
+    name: 'muscle-edit',
+    meta: {
+      title: 'Edit Muscle',
+      noCache: false,
+      hidden: true
     }
-  ]
-}
+  }
+]
