@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-import pathToRegexp from 'path-to-regexp'
+import { compile } from 'path-to-regexp'
 import { Component, Vue, Watch } from 'vue-property-decorator'
 // eslint-disable-next-line no-unused-vars
 import { RouteRecord, Route } from 'vue-router'
@@ -41,7 +41,7 @@ export default class extends Vue {
     if (!this.isDashboard(first)) {
       matched = [{
         path: '/dashboard',
-        meta: { title: 'dashboard' }
+        meta: { title: 'Dashboard' }
       } as RouteRecord].concat(matched)
     }
     this.breadcrumbs = matched.filter((item) => {
@@ -60,7 +60,7 @@ export default class extends Vue {
   private pathCompile (path: string) {
     // To solve this problem https://github.com/PanJiaChen/vue-element-admin/issues/561
     const { params } = this.$route
-    const toPath = pathToRegexp.compile(path)
+    const toPath = compile(path)
     return toPath(params)
   }
 
