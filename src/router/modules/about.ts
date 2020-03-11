@@ -20,16 +20,20 @@ import Layout from '@/components/Layout/index.vue'
   }
 */
 export const routes: RouteConfig = {
-  path: '/about',
+  path: '',
   component: Layout,
+  redirect: 'noredirect',
+  meta: {
+    menuOrder: 2
+  },
   children: [
     {
       path: '/about',
       component: () => import(/* webpackChunkName: "about" */ '@/views/about/index.vue'),
       name: 'about',
       meta: {
-        title: 'About',
-        icon: 'dashboard'
+        title: 'About Page',
+        icon: 'question'
       }
     }
   ]

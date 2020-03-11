@@ -25,7 +25,8 @@ export const routes: RouteConfig = {
   redirect: 'noredirect',
   meta: {
     title: 'Error Page',
-    icon: '404'
+    icon: 'cancel-mark',
+    menuOrder: 3
   },
   children: [
     {

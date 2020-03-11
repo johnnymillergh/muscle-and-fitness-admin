@@ -23,6 +23,9 @@ export const routes: RouteConfig = {
   path: '/',
   component: Layout,
   redirect: '/dashboard',
+  meta: {
+    menuOrder: 1
+  },
   children: [
     {
       path: 'dashboard',

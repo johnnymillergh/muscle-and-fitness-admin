@@ -11,6 +11,9 @@ routerModulesFiles.keys().forEach(key => {
   const specificRouterVariableKey = Object.keys(routerModulesFiles(key))
   allModuleRouterList = allModuleRouterList.concat(routerModulesFiles(key)[specificRouterVariableKey[0]])
 })
+allModuleRouterList.sort((a, b) => {
+  return a.meta.menuOrder - b.meta.menuOrder
+})
 
 /*
   name:'router-name'             the name field is required when using <keep-alive>, it should also match its component's name property
