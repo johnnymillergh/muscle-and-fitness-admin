@@ -1,5 +1,5 @@
 import { Component, Vue, Watch } from 'vue-property-decorator'
-// import { AppModule, DeviceType } from '@/store/modules/app'
+import { AppModule, DeviceType } from '@/store/modules/app'
 
 const WIDTH = 992 // refer to Bootstrap's responsive design
 
@@ -8,21 +8,18 @@ const WIDTH = 992 // refer to Bootstrap's responsive design
 })
 export default class extends Vue {
   get device () {
-    return 'desktop'
+    return AppModule.device
   }
 
   get sidebar () {
-    return {
-      opened: true,
-      withoutAnimation: false
-    }
+    return AppModule.sidebar
   }
 
   @Watch('$route')
   private onRouteChange () {
-    // if (this.device === DeviceType.Mobile && this.sidebar.opened) {
-    //   AppModule.CloseSideBar(false)
-    // }
+    if (this.device === DeviceType.Mobile && this.sidebar.opened) {
+      AppModule.CloseSideBar(false)
+    }
   }
 
   beforeMount () {
@@ -30,11 +27,11 @@ export default class extends Vue {
   }
 
   mounted () {
-    // const isMobile = this.isMobile()
-    // if (isMobile) {
-    //   AppModule.ToggleDevice(DeviceType.Mobile)
-    //   AppModule.CloseSideBar(true)
-    // }
+    const isMobile = this.isMobile()
+    if (isMobile) {
+      AppModule.ToggleDevice(DeviceType.Mobile)
+      AppModule.CloseSideBar(true)
+    }
   }
 
   beforeDestroy () {
@@ -48,11 +45,11 @@ export default class extends Vue {
 
   private resizeHandler () {
     if (!document.hidden) {
-      // const isMobile = this.isMobile()
-      // AppModule.ToggleDevice(isMobile ? DeviceType.Mobile : DeviceType.Desktop)
-      // if (isMobile) {
-      //   AppModule.CloseSideBar(true)
-      // }
+      const isMobile = this.isMobile()
+      AppModule.ToggleDevice(isMobile ? DeviceType.Mobile : DeviceType.Desktop)
+      if (isMobile) {
+        AppModule.CloseSideBar(true)
+      }
     }
   }
 }

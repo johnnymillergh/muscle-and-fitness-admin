@@ -15,7 +15,7 @@
 <script lang="ts">
 // eslint-disable-next-line no-unused-vars
 import { Component, Prop, Vue } from 'vue-property-decorator'
-// import { AppModule } from '@/store/modules/app'
+import { AppModule } from '@/store/modules/app'
 // import { PermissionModule } from '@/store/modules/permission'
 // import { SettingsModule } from '@/store/modules/settings'
 import SidebarItem from './SidebarItem.vue'
@@ -32,7 +32,7 @@ import { routes } from '@/router'
 })
 export default class extends Vue {
   get sidebar () {
-    return { opened: true }
+    return AppModule.sidebar
   }
 
   get routes () {
