@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import { ValidationError } from 'class-validator/validation/ValidationError'
+import { ValidationError } from 'class-validator'
 
 export class ClassValidationUtil {
   /**
