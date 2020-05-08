@@ -36,7 +36,7 @@ export class MultiWindow extends Vue {
       // Determines whether an object has a property with the specified name.
       // eslint-disable-next-line no-prototype-builtins
       if (!multiWindowOptions.hasOwnProperty(key)) {
-        break
+        continue
       }
       const val = ((multiWindowOptions[key] === null) || (multiWindowOptions[key] === undefined) ? '' : multiWindowOptions[key])
       queryString += queryString === '' ? `?${key}=${val}` : `&${key}=${val}`
