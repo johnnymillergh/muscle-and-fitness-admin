@@ -1,14 +1,17 @@
-/**
- * Universal Status.
- * @author Johnny Miller (鍾俊), e-mail: johnnysviva@outlook.com
- * @date 2019-03-30
- * @time 11:56
- */
-export class Status {
+import { BaseEnumeration } from '@/enumerations/base'
+
+class Status extends BaseEnumeration {
+  /**
+   * The HTTP status code.
+   */
   private readonly _code: number
+  /**
+   * The message that explains what the HTTP status code is.
+   */
   private readonly _message: string
 
   constructor (code: number, message: string) {
+    super()
     this._code = code
     this._message = message
   }

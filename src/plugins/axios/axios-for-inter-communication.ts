@@ -5,7 +5,7 @@
 // eslint-disable-next-line no-unused-vars
 import Axios, { AxiosRequestConfig, AxiosResponse, ResponseType } from 'axios'
 // import * as Cancellation from '@/plugins/axios/cancellation'
-import { HttpStatus } from '@/constants/http-status'
+import { HttpStatus } from '@/enumerations/http-status'
 // import { AxiosUtil } from '@/utils/axios-util'
 
 /**

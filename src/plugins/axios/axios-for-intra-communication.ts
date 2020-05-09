@@ -7,7 +7,7 @@ import Axios, { AxiosRequestConfig, AxiosResponse, Canceler, ResponseType } from
 import { validate } from 'class-validator'
 import { ClassValidationUtil } from '@/utils/class-validation-util'
 import * as Cancellation from '@/plugins/axios/cancellation'
-import { HttpStatus } from '@/constants/http-status'
+import { HttpStatus } from '@/enumerations/http-status'
 import { ResponseBody } from '@/plugins/axios/response-body'
 import { AxiosUtil } from '@/utils/axios-util'
 
