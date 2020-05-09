@@ -14,6 +14,7 @@ class Status extends BaseEnumeration {
     super()
     this._code = code
     this._message = message
+    Object.freeze(this)
   }
 
   get code (): number {
@@ -144,3 +145,5 @@ export const HttpStatus = {
     return status
   }
 }
+
+Object.freeze(HttpStatus)
