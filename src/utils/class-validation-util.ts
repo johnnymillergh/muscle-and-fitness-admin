@@ -28,6 +28,10 @@ export class ClassValidationUtil {
     let errorMessage = ''
     validationErrors.forEach(validationError => {
       for (const property in validationError.constraints) {
+        // eslint-disable-next-line no-prototype-builtins
+        if (!validationError.constraints.hasOwnProperty(property)) {
+          continue
+        }
         errorMessage += `Field: ${validationError.property}, type: ${property}, error message: ${validationError.constraints[property]}; `
       }
     })
