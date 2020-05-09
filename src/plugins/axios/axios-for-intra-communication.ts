@@ -81,11 +81,12 @@ service.interceptors.response.use(
     try {
       const status = HttpStatus.getStatusByCode(error.response?.status)
       response.status = status.code
-      response.message = status.message
-    } catch (e) {
-      console.error(e)
-      response.status = HttpStatus.BAD_REQUEST.code
-      response.message = `${HttpStatus.BAD_REQUEST.message} ${error}`
+      const message = error.response?.data?.message || status.message
+      response.message = `Error Code: ${status.code}. ${message}`
+    } catch (error2) {
+      console.error(error2)
+      response.status = error.response?.status
+      response.message = `${error.response?.statusText} ${error}`
     }
     return Promise.reject(response)
   }
