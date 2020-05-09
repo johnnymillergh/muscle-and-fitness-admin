@@ -141,7 +141,10 @@ export const HttpStatus = {
    * Method not allowed
    */
   METHOD_NOT_ALLOWED: new Status(405, 'The resource was requested using a method that is not allowed.'),
-  NOT_ACCEPTABLE: new Status(406, 'Not Acceptable. The requested resource is capable of generating only content not acceptable according to the Accept headers sent in the request.'),
+  /**
+   * Not acceptable
+   */
+  NOT_ACCEPTABLE: new Status(406, 'Not acceptable. The requested resource is capable of generating only content not acceptable according to the Accept headers sent in the request.'),
   /**
    * Param not matched
    */
