@@ -1,5 +1,5 @@
 /**
- * Customizable base enumeration
+ * Customizable base enumeration. Each every one of enumeration should extend directly or indirectly this class
  * @author Johnny Miller (鍾俊), e-mail: johnnysviva@outlook.com
  * @date 5/9/20 11:28 AM
  */
@@ -11,7 +11,7 @@ export class BaseEnumeration {
  * @author Johnny Miller (鍾俊), e-mail: johnnysviva@outlook.com
  * @date 5/9/20 11:29 AM
  */
-export class BaseExtendableEnumeration {
+export class BaseExtendableEnumeration extends BaseEnumeration {
   /**
    * The value.
    */
@@ -22,6 +22,7 @@ export class BaseExtendableEnumeration {
   private readonly _description: string
 
   constructor (value: number, description: string) {
+    super()
     this._value = value
     this._description = description
   }
@@ -40,7 +41,7 @@ export class BaseExtendableEnumeration {
  * @author Johnny Miller (鍾俊), e-mail: johnnysviva@outlook.com
  * @date 5/9/20 11:30 AM
  */
-export class BaseNonExtendableEnumeration {
+export class BaseNonExtendableEnumeration extends BaseEnumeration {
   /**
    * The value.
    */
@@ -51,6 +52,7 @@ export class BaseNonExtendableEnumeration {
   private readonly _description: string
 
   constructor (value: number, description: string) {
+    super()
     this._value = value
     this._description = description
     Object.freeze(this)

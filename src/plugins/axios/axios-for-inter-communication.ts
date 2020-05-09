@@ -58,7 +58,7 @@ export const service = Axios.create({
    */
   validateStatus: (status: number) => {
     // Only the HTTP status code is equal to 200, axios would resolve the promise
-    return status === HttpStatus.SUCCESS.code
+    return status === HttpStatus.OK.code
   }
 })
 
