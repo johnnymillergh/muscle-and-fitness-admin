@@ -13,4 +13,6 @@ services:
     ports:
       - 8081:80
     volumes:
-      - /Users/johnny/docker-file-mapping/exrx-net-crawler/log:/var/log/nginx
+      - /Users/johnny/docker-file-mapping/muscle-and-fitness-admin-stage:/var/log/nginx
+    environment:
+      TZ: Asia/Hong_Kong

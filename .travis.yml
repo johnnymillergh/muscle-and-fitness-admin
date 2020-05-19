@@ -1,10 +1,17 @@
 language: node_js
+
 node_js:
   - node
+
 install:
   - npm install
+
 script:
+  - echo "Starting to build. DOCKER_HUB_USERNAME:"
+  - echo "$DOCKER_HUB_USERNAME"
+  - "docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD"
   - npm run go:travis
+
 notifications:
   email:
     on_failure: change
