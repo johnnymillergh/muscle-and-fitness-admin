@@ -1,10 +1,13 @@
+# Travis CI Java documentation can be found in:
+# https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
 language: node_js
 
 node_js:
   - node
 
-install:
-  - npm install
+# Skipping the Installation Phase
+# https://docs.travis-ci.com/user/job-lifecycle/#skipping-the-installation-phase
+install: skip
 
 script:
   - echo "Starting to build. DOCKER_HUB_USERNAME:"
@@ -12,7 +15,8 @@ script:
   - "docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD"
   - npm run go:travis
 
+# https://docs.travis-ci.com/user/notifications#default-notification-settings
 notifications:
   email:
-    on_failure: change
     on_success: change
+    on_failure: always
