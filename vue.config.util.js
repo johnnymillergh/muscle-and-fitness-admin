@@ -17,20 +17,20 @@ module.exports = {
     info(`pathPrefix: ${pathPrefix}`)
     const vueAppEnv = process.env.VUE_APP_ENV
     let publishPath
-    if (vueAppEnv === 'prod') {
+    if (vueAppEnv === 'dev') {
+      const applicationName = JSON.parse(unescape(process.env.VUE_APP_PACKAGE_JSON)).name
+      if (applicationName) {
+        publishPath = applicationName ? pathPrefix.concat(applicationName, '-', vueAppEnv, '/') : pathPrefix
+        info(`publicPath for [${vueAppEnv}] with application name: ${publishPath}`)
+        return publishPath
+      }
       publishPath = pathPrefix
-      info(`publicPath for [${vueAppEnv}]: ${publishPath}`)
-      return pathPrefix
-    }
-    const applicationName = JSON.parse(unescape(process.env.VUE_APP_PACKAGE_JSON)).name
-    if (applicationName) {
-      publishPath = applicationName ? pathPrefix.concat(applicationName, '-', vueAppEnv, '/') : pathPrefix
-      info(`publicPath for [${vueAppEnv}] with application name: ${publishPath}`)
+      info(`publicPath for [${vueAppEnv}] without application name: ${publishPath}`)
       return publishPath
     }
     publishPath = pathPrefix
-    info(`publicPath for [${vueAppEnv}] without application name: ${publishPath}`)
-    return publishPath
+    info(`publicPath for [${vueAppEnv}]: ${publishPath}`)
+    return pathPrefix
   },
   /**
    * Get app name.
