@@ -33,7 +33,10 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint --ext .ts,.js,.vue src",
     "analysis": "vue-cli-service build --report",
-    "go:travis": "npm run lint && npm run test:unit && npm run build:prod"
+    "travis:dev_dkr": "npm run lint && npm run test:unit && npm run build:dev_dkr",
+    "travis:test": "npm run lint && npm run test:unit && npm run build:test",
+    "travis:stage": "npm run lint && npm run test:unit && npm run build:stage",
+    "travis:prod": "npm run lint && npm run test:unit && npm run build:prod"
   },
   "dependencies": {
     "axios": "^0.19.2",
