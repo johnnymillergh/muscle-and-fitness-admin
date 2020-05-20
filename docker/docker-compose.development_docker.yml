@@ -5,8 +5,8 @@ services:
     container_name: muscle-and-fitness-admin-dev_dkr
     image: "ijohnnymiller/muscle-and-fitness-admin-dev_dkr:${TAG}"
     build:
-      dockerfile: Dockerfile
-      context: .
+      dockerfile: ./Dockerfile
+      context: ..
       args:
         ENV: development_docker
         ENV_ALIAS: dev_dkr

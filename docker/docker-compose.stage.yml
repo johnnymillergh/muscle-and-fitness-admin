@@ -5,8 +5,8 @@ services:
     container_name: muscle-and-fitness-admin-stage
     image: "ijohnnymiller/muscle-and-fitness-admin-stage:${TAG}"
     build:
-      dockerfile: Dockerfile
-      context: .
+      dockerfile: ./Dockerfile
+      context: ..
       args:
         ENV: stage
         ENV_ALIAS: stage
