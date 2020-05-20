@@ -11,22 +11,26 @@ install: skip
 
 script:
   - echo "Starting to build. DOCKER_HUB_USERNAME:"
-  - echo "$DOCKER_HUB_USERNAME"
-  - "docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD"
-  - npm run travis:dev_dkr
-  - npm run travis:test
-  - npm run travis:stage
-  - npm run travis:prod
+  - echo $DOCKER_HUB_USERNAME
+  - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+  - $TARGET
+
+env:
+  global:
+    # https://docs.travis-ci.com/user/encryption-keys#usage
+    # travis encrypt --pro KEY=value
+    - secure: "UPSIcdq/KZGrocepxVpkqEtDyZjDah3E6bbLEVzcMwI33u+wbY2O0zzH5RM6Yjl6YOjCuMj+N7HDg2ZiiMQXk8iWA9V+BAAhJMypzhM+6E6DZyky7pqHl9k6aQBjOVpYlx6FRuZ4SppxRzMxJ3VlqQ/RLbGVEIXprMQnn9fetE2ux5QCd6inJA3yfi7jFK7htRnGtGvMpfJ24syFbXBjqoVPnF40Alx0EoTxyiWavCPySuLvDuV0hdWSzNTe8BUMftZckA8UniN+ixwmIDqUy+ayqpSI/A8eC83BFALZoB8xcYbYnhuSto9n53zl+7TPNYIFWh02ubayHJwfB96MosS5hZ1l1MN0Wigq/KDlQsH0iDQxHfhG3NRKNAF2+TXMXbOExvc658SttuIxHIJq3Mesvl/fqkzFJMlYEBebbuxwg9MusmTMDjAUUE6+oaj7029WSr/ThBvn0ERi+HkyKTpzXTMENEdQvdVPT+xRfNGSYmEX9Nc7MIacA23D1iTlXQc91BoxFBPuEKHKBD2Pi/XU4+OiKYGLyRXu2tvPd06HVU3diBacJ/AZ7uCc7iU95l003uP1N7nw4MzDNtsZnq6WSavIHNVJyFHZAMWUIuTLfu9zn7m5pqpeMZf3SmpCk+OBK7bZ35hGHgZbHGvBgzZfx/mRhi8/ABrT1w6nisE="
+    - secure: "JS0dQBu2PoA5qno1VzYYbNu202x4jcCqpK8WcYow3hIxgvHf1zb9v6AVuiO1FHO6YKu9NOyjKgwmgWrsytEO/Wi86dLavlLVD/XfwPjvoE4AhS9X1U8zTSY2IBN5+iw8N59xnhGN1MaOuGJTCR+mAoR6YhBNsi0xoiZwc6R7tnK+NfLcJrs/BQrQSTg62vIrbzIkuDiwpKjFv07gRPDLK85q4dpmpSo3P0RF9gE4ichq2izE4bBYDrdWvFluaT4MwNlxG6lDYE6kYx7Kinyhk0yF2gRg3L7IJWijbcpAGScbFLJhFR1NEvmx481BcVIRXCKt7HvdwE/9qp0qd8yFnPtO+Vpy32ujSUua4f2dq7ChaAkuxGqWLGQO/NFukVAxKzWxjrrsPlZmyGtEqaUoMMVSieQ2alLVD4McdqCMMWaaxk7k1e88DwywosMNuRY6fasTtE4tvmEf4KrjRt1FtUXbdKl/i8hPZT/cudt+NVrWxptlqvLLcQL222q7sNRkQ7Ytlh6OYUCKUpeHscSkD6HDAwR18GmOVDWp0z3vrBWsG+skn2TGDYkusBQ96Epp7l6cSMb9VSKRuqI5QBmH8Ex1krBbO7NGQrXeyWMjq9KGOO2EkdFWDur7QuzssIwxZsiKGx4xOL4kAx4aNBXnDO1bbP4MDgi/dMx5qZIUFK4="
+  # Speeding up the build
+  # https://docs.travis-ci.com/user/speeding-up-the-build/
+  matrix:
+    - TARGET="npm run travis:dev_dkr"
+    - TARGET="npm run travis:test"
+    - TARGET="npm run travis:stage"
+    - TARGET="npm run travis:prod"
 
 # https://docs.travis-ci.com/user/notifications#default-notification-settings
 notifications:
   email:
     on_success: change
     on_failure: always
-
-# https://docs.travis-ci.com/user/encryption-keys#usage
-# travis encrypt --pro KEY=value
-env:
-  global:
-    - secure: "UPSIcdq/KZGrocepxVpkqEtDyZjDah3E6bbLEVzcMwI33u+wbY2O0zzH5RM6Yjl6YOjCuMj+N7HDg2ZiiMQXk8iWA9V+BAAhJMypzhM+6E6DZyky7pqHl9k6aQBjOVpYlx6FRuZ4SppxRzMxJ3VlqQ/RLbGVEIXprMQnn9fetE2ux5QCd6inJA3yfi7jFK7htRnGtGvMpfJ24syFbXBjqoVPnF40Alx0EoTxyiWavCPySuLvDuV0hdWSzNTe8BUMftZckA8UniN+ixwmIDqUy+ayqpSI/A8eC83BFALZoB8xcYbYnhuSto9n53zl+7TPNYIFWh02ubayHJwfB96MosS5hZ1l1MN0Wigq/KDlQsH0iDQxHfhG3NRKNAF2+TXMXbOExvc658SttuIxHIJq3Mesvl/fqkzFJMlYEBebbuxwg9MusmTMDjAUUE6+oaj7029WSr/ThBvn0ERi+HkyKTpzXTMENEdQvdVPT+xRfNGSYmEX9Nc7MIacA23D1iTlXQc91BoxFBPuEKHKBD2Pi/XU4+OiKYGLyRXu2tvPd06HVU3diBacJ/AZ7uCc7iU95l003uP1N7nw4MzDNtsZnq6WSavIHNVJyFHZAMWUIuTLfu9zn7m5pqpeMZf3SmpCk+OBK7bZ35hGHgZbHGvBgzZfx/mRhi8/ABrT1w6nisE="
-    - secure: "JS0dQBu2PoA5qno1VzYYbNu202x4jcCqpK8WcYow3hIxgvHf1zb9v6AVuiO1FHO6YKu9NOyjKgwmgWrsytEO/Wi86dLavlLVD/XfwPjvoE4AhS9X1U8zTSY2IBN5+iw8N59xnhGN1MaOuGJTCR+mAoR6YhBNsi0xoiZwc6R7tnK+NfLcJrs/BQrQSTg62vIrbzIkuDiwpKjFv07gRPDLK85q4dpmpSo3P0RF9gE4ichq2izE4bBYDrdWvFluaT4MwNlxG6lDYE6kYx7Kinyhk0yF2gRg3L7IJWijbcpAGScbFLJhFR1NEvmx481BcVIRXCKt7HvdwE/9qp0qd8yFnPtO+Vpy32ujSUua4f2dq7ChaAkuxGqWLGQO/NFukVAxKzWxjrrsPlZmyGtEqaUoMMVSieQ2alLVD4McdqCMMWaaxk7k1e88DwywosMNuRY6fasTtE4tvmEf4KrjRt1FtUXbdKl/i8hPZT/cudt+NVrWxptlqvLLcQL222q7sNRkQ7Ytlh6OYUCKUpeHscSkD6HDAwR18GmOVDWp0z3vrBWsG+skn2TGDYkusBQ96Epp7l6cSMb9VSKRuqI5QBmH8Ex1krBbO7NGQrXeyWMjq9KGOO2EkdFWDur7QuzssIwxZsiKGx4xOL4kAx4aNBXnDO1bbP4MDgi/dMx5qZIUFK4="
