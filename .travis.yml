@@ -14,7 +14,7 @@ script:
   - echo "Starting to build. DOCKER_HUB_USERNAME:"
   - echo $DOCKER_HUB_USERNAME
   - docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
-  - $TARGET
+  - $TARGET_JOB
 
 env:
   global:
@@ -25,10 +25,10 @@ env:
   # Speeding up the build
   # https://docs.travis-ci.com/user/speeding-up-the-build/
   matrix:
-    - TARGET="npm run travis:dev_dkr"
-    - TARGET="npm run travis:test"
-    - TARGET="npm run travis:stage"
-    - TARGET="npm run travis:prod"
+    - TARGET_JOB="npm run travis:dev_dkr"
+    - TARGET_JOB="npm run travis:test"
+    - TARGET_JOB="npm run travis:stage"
+    - TARGET_JOB="npm run travis:prod"
 
 # https://docs.travis-ci.com/user/notifications#default-notification-settings
 notifications:
