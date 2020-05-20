@@ -7,7 +7,8 @@ node_js:
 
 # Skipping the Installation Phase
 # https://docs.travis-ci.com/user/job-lifecycle/#skipping-the-installation-phase
-install: skip
+install:
+  - npm install
 
 script:
   - echo "Starting to build. DOCKER_HUB_USERNAME:"
