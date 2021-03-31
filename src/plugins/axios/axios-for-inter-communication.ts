@@ -200,7 +200,7 @@ export function post (url: string, params: any): Promise<any> {
  * @param params URL search params.
  * @return {Promise<any>} Response data.
  */
-export function legacyPost (url: string, params: any): Promise<any> {
+export function legacyPost (url: string, params?: any): Promise<any> {
   const urlSearchParams = new URLSearchParams()
   Object.keys(params).forEach(key => {
     urlSearchParams.append(key, params[key])

@@ -126,7 +126,7 @@ export function get (url: string, params?: any, responseType: ResponseType = 'js
  * @return {Promise<any>} Response data.
  * @see <a href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE'>HTTP request methods — DELETE | MDN</a>
  */
-export function deleteRequest (url: string, params: any): Promise<any> {
+export function deleteRequest (url: string, params?: any): Promise<any> {
   return new Promise<any>((resolve, reject) => {
     service.delete(url, {
       params: params
@@ -150,7 +150,7 @@ export function deleteRequest (url: string, params: any): Promise<any> {
  * @return {Promise<any>} Response data.
  * @see <a href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD'>HTTP request methods — HEAD | MDN</a>
  */
-export function head (url: string, params: any): Promise<any> {
+export function head (url: string, params?: any): Promise<any> {
   return new Promise<any>((resolve, reject) => {
     service.head(url, {
       params: params
@@ -173,7 +173,7 @@ export function head (url: string, params: any): Promise<any> {
  * @return {Promise<any>} Response data.
  * @see <a href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST'>HTTP request methods — POST | MDN</a>
  */
-export function post (url: string, params: any): Promise<any> {
+export function post (url: string, params?: any): Promise<any> {
   return new Promise<any>((resolve, reject) => {
     service.post(url, params)
       .then(resp => {
@@ -196,7 +196,7 @@ export function post (url: string, params: any): Promise<any> {
  * @param params URL search params.
  * @return {Promise<any>} Response data.
  */
-export function legacyPost (url: string, params: any): Promise<any> {
+export function legacyPost (url: string, params?: any): Promise<any> {
   const urlSearchParams = new URLSearchParams()
   Object.keys(params).forEach(key => {
     urlSearchParams.append(key, params[key])
@@ -262,7 +262,7 @@ export function postWithMultipart (url: string, data: any): Promise<any> {
  * @returns {Promise<any>} Response data.
  * @see <a href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT'>HTTP request methods — PUT | MDN</a>
  */
-export function put (url: string, params: any): Promise<any> {
+export function put (url: string, params?: any): Promise<any> {
   return new Promise<any>((resolve, reject) => {
     service.put(url, params).then(resp => {
       resolve(resp)
@@ -285,7 +285,7 @@ export function put (url: string, params: any): Promise<any> {
  * @return {Promise<any>} Response data.
  * @see <a href='https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH'>HTTP request methods — PATCH | MDN</a>
  */
-export function patch (url: string, params: any): Promise<any> {
+export function patch (url: string, params?: any): Promise<any> {
   return new Promise((resolve, reject) => {
     service.patch<any>(url, params)
       .then(resp => {
